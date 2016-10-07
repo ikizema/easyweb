@@ -12,6 +12,7 @@ appender("STDOUT", ConsoleAppender) {
   }
 }
 root(INFO, ["STDOUT"])
+
 //logger("ivan.dev.web", DEBUG, ["STDOUT"])
 //logger("ivan.dev.web", WARN, ["STDOUT"])
 

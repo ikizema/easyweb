@@ -7,5 +7,9 @@
 	<beans>
     	<bean id="jettyService" class="ivan.dev.web.JettyService"/>
 	</beans>
+	
+	<beans>
+    	<bean id="runtimeConfig" class="ivan.dev.web.config.model.RuntimeConfig"/>
+	</beans>
 
 </beans>
