@@ -1,28 +1,33 @@
 package ivan.dev.web;
 
-import org.eclipse.jetty.server.Server;
 import org.kohsuke.args4j.CmdLineException;
 import org.kohsuke.args4j.CmdLineParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.slf4j.bridge.SLF4JBridgeHandler;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.core.env.ConfigurableEnvironment;
 import org.springframework.core.env.MapPropertySource;
 import org.springframework.core.env.MutablePropertySources;
 import org.springframework.core.io.support.ResourcePropertySource;
-import ivan.dev.web.config.AppConfig;
-import ivan.dev.web.config.model.RuntimeConfig;
+
+import ivan.dev.web.config.cli.RuntimeConfig;
+import ivan.dev.web.rs.AppConfig;
 
 public class Main {
 	
     private static Logger logger = LoggerFactory.getLogger(Main.class);
 
     public static void main(String[] args) throws Exception {
+    	// Bridge Util Logging
+    	SLF4JBridgeHandler.removeHandlersForRootLogger();
+    	SLF4JBridgeHandler.install();
+    	
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
-        context.register(AppConfig.class);
-        context.refresh();
+		ConfigurableEnvironment env = context.getEnvironment();
+		MutablePropertySources propertySources = env.getPropertySources();
 
-        // Parse Command Line Arguments
+        // Parse Command Line Arguments and to Spring Context
         RuntimeConfig runtimeConfig = new RuntimeConfig();
 		CmdLineParser parser = new CmdLineParser(runtimeConfig);
 		try {
@@ -32,28 +37,20 @@ public class Main {
 	        parser.printUsage(System.err);
 	        return;
 	    }
-
-		// Pass CLI arguments to Spring Context
-		ConfigurableEnvironment env = context.getEnvironment();
-		MutablePropertySources propertySources = env.getPropertySources();
 		propertySources.addFirst(new MapPropertySource("cli", runtimeConfig.getProperties()));
 		
+		// Add Global Properties
+		String envGlobalProperties = "classpath:/ivan/dev/web/config/env/env-global.properties";
+		ResourcePropertySource envGlobalPropertiesRessources = new ResourcePropertySource("envGlobalProperties", envGlobalProperties);
+		propertySources.addAfter("cli", envGlobalPropertiesRessources);
+
+		// Add Environment Related Properties
 		String envProperties = "classpath:/ivan/dev/web/config/env/env-${env}.properties";
 		envProperties = envProperties.replace("${env}", env.getProperty("env"));
 		ResourcePropertySource envPropertiesRessources = new ResourcePropertySource("envProperties", envProperties);
-		propertySources.addFirst(envPropertiesRessources);
-		
-        logger.info("Port : {}", runtimeConfig.getPort());
-        logger.info("Env : {}", runtimeConfig.getEnv());
-        logger.info("Property project : {}", env.getProperty("project"));
-        logger.info("Property env : {}", env.getProperty("env"));
-        logger.info("Property port : {}", env.getProperty("port"));
-        logger.info("Property topic : {}", env.getProperty("topic"));
-        logger.info("Property server : {}", env.getProperty("server"));
-
-    	Server server = new Server(Integer.parseInt(env.getProperty("port")));
-    	server.setHandler(context.getBean(JettyService.class));
-    	server.start();
-    	server.join();
+		propertySources.addBefore("envGlobalProperties", envPropertiesRessources);
+        
+        context.register(AppConfig.class);
+        context.refresh();
     }
 }

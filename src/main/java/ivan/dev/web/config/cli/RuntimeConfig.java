@@ -1,4 +1,4 @@
-package ivan.dev.web.config.model;
+package ivan.dev.web.config.cli;
 
 import java.util.ArrayList;
 import java.util.HashMap;
