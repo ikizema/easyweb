@@ -40,12 +40,12 @@ public class Main {
 		propertySources.addFirst(new MapPropertySource("cli", runtimeConfig.getProperties()));
 		
 		// Add Global Properties
-		String envGlobalProperties = "classpath:/ivan/dev/web/config/env/env-global.properties";
+		String envGlobalProperties = "classpath:config/env/env-global.properties";
 		ResourcePropertySource envGlobalPropertiesRessources = new ResourcePropertySource("envGlobalProperties", envGlobalProperties);
 		propertySources.addAfter("cli", envGlobalPropertiesRessources);
 
 		// Add Environment Related Properties
-		String envProperties = "classpath:/ivan/dev/web/config/env/env-${env}.properties";
+		String envProperties = "classpath:config/env/env-${env}.properties";
 		envProperties = envProperties.replace("${env}", env.getProperty("env"));
 		ResourcePropertySource envPropertiesRessources = new ResourcePropertySource("envProperties", envProperties);
 		propertySources.addBefore("envGlobalProperties", envPropertiesRessources);

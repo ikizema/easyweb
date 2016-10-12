@@ -1,5 +1,33 @@
 Manifest-Version: 1.0
 Built-By: ikizema
+Class-Path: . lib/jetty-server-9.2.10.v20150310.jar lib/javax.servlet-
+ api-3.1.0.jar lib/jetty-http-9.2.10.v20150310.jar lib/jetty-util-9.2.
+ 10.v20150310.jar lib/jetty-io-9.2.10.v20150310.jar lib/jetty-servlet-
+ 9.2.10.v20150310.jar lib/jetty-security-9.2.10.v20150310.jar lib/args
+ 4j-2.33.jar lib/spring-context-4.3.3.RELEASE.jar lib/spring-aop-4.3.3
+ .RELEASE.jar lib/spring-beans-4.3.3.RELEASE.jar lib/spring-core-4.3.3
+ .RELEASE.jar lib/commons-logging-1.2.jar lib/spring-expression-4.3.3.
+ RELEASE.jar lib/logback-classic-1.1.7.jar lib/logback-core-1.1.7.jar 
+ lib/slf4j-api-1.7.20.jar lib/log4j-over-slf4j-1.7.21.jar lib/jul-to-s
+ lf4j-1.7.21.jar lib/groovy-2.4.7.jar lib/swagger-jersey2-jaxrs-1.5.3.
+ jar lib/swagger-jaxrs-1.5.3.jar lib/jackson-dataformat-yaml-2.4.5.jar
+  lib/jackson-core-2.4.5.jar lib/snakeyaml-1.12.jar lib/jackson-datafo
+ rmat-xml-2.4.5.jar lib/jackson-databind-2.4.5.jar lib/jackson-module-
+ jaxb-annotations-2.4.5.jar lib/stax2-api-3.1.4.jar lib/swagger-core-1
+ .5.3.jar lib/commons-lang3-3.2.1.jar lib/jackson-annotations-2.4.5.ja
+ r lib/jackson-datatype-joda-2.4.5.jar lib/joda-time-2.2.jar lib/swagg
+ er-models-1.5.3.jar lib/swagger-annotations-1.5.3.jar lib/validation-
+ api-1.1.0.Final.jar lib/reflections-0.9.9.jar lib/javassist-3.18.2-GA
+ .jar lib/annotations-2.0.1.jar lib/guava-18.0.jar lib/jackson-jaxrs-j
+ son-provider-2.4.5.jar lib/jackson-jaxrs-base-2.4.5.jar lib/jersey-co
+ ntainer-servlet-core-2.1.jar lib/javax.inject-2.2.0-b10.jar lib/jerse
+ y-server-2.1.jar lib/jersey-client-2.1.jar lib/hk2-api-2.2.0-b10.jar 
+ lib/hk2-utils-2.2.0-b10.jar lib/hk2-locator-2.2.0-b10.jar lib/asm-all
+ -repackaged-2.2.0-b10.jar lib/cglib-2.2.0-b10.jar lib/jersey-common-2
+ .1.jar lib/javax.annotation-api-1.2.jar lib/osgi-resource-locator-1.0
+ .1.jar lib/javax.ws.rs-api-2.0.jar lib/jersey-media-multipart-2.1.jar
+  lib/mimepull-1.8.jar
 Build-Jdk: 1.8.0_101
 Created-By: Maven Integration for Eclipse
+Main-Class: ivan.dev.web.Main
 

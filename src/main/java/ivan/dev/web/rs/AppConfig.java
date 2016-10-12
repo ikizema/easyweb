@@ -80,7 +80,7 @@ public class AppConfig {
         return entityBrowserContext;
     }
 
-    // This starts the Swagger UI at http://localhost:9999/docs
+    // This starts the Swagger UI at http://localhost:port/docs
     private static ContextHandler buildSwaggerUI() throws Exception {
         final ResourceHandler swaggerUIResourceHandler = new ResourceHandler();
         swaggerUIResourceHandler.setResourceBase( AppConfig.class.getClassLoader().getResource( "swaggerui" ).toURI().toString() );
