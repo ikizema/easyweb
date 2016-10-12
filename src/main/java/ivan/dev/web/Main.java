@@ -10,7 +10,6 @@ import org.springframework.core.env.ConfigurableEnvironment;
 import org.springframework.core.env.MapPropertySource;
 import org.springframework.core.env.MutablePropertySources;
 import org.springframework.core.io.support.ResourcePropertySource;
-
 import ivan.dev.web.config.cli.RuntimeConfig;
 import ivan.dev.web.rs.AppConfig;
 
@@ -37,6 +36,14 @@ public class Main {
 	        parser.printUsage(System.err);
 	        return;
 	    }
+		
+		// Display Help Message
+		if (runtimeConfig.isHelp()) {
+			System.out.println("Application help page :");
+			parser.printUsage(System.out);
+			return;
+		}
+		
 		propertySources.addFirst(new MapPropertySource("cli", runtimeConfig.getProperties()));
 		
 		// Add Global Properties
