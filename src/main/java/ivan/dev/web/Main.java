@@ -13,6 +13,7 @@ import org.springframework.core.io.support.ResourcePropertySource;
 import ivan.dev.web.cli.RuntimeConfig;
 import ivan.dev.web.rs.RestConfig;
 import ivan.dev.web.server.AppConfig;
+import ivan.dev.web.ui.UIConfig;
 
 public class Main {
 	
@@ -61,7 +62,7 @@ public class Main {
         
 		context.register(AppConfig.class);
         context.register(RestConfig.class);
-//        context.register(UIConfig.class);
+        context.register(UIConfig.class);
         context.refresh();
         logger.debug("Context loaded.");
     }

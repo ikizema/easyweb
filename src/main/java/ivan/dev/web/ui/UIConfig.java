@@ -11,7 +11,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Configuration;
 import com.vaadin.server.VaadinServlet;
-import ivan.dev.web.ui.test.HelloWorldUI;
+
+import ivan.dev.web.ui.forms.HelloWorldUI;
 
 @Configuration
 public class UIConfig {
@@ -29,7 +30,7 @@ public class UIConfig {
 	
     private static ContextHandler buildContext() {
         ServletContextHandler contextHandler = new ServletContextHandler(ServletContextHandler.SESSIONS);
-        contextHandler.setContextPath("/ui/");
+        contextHandler.setContextPath("/");
 
         ServletHolder sh = new ServletHolder(new VaadinServlet());
         contextHandler.addServlet(sh, "/*");

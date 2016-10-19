@@ -1,4 +1,4 @@
-package ivan.dev.web.ui.test;
+package ivan.dev.web.ui.forms;
 
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.Title;
@@ -19,8 +19,9 @@ public class HelloWorldUI extends UI {
         setContent(layout);
         layout.addComponent(new Label("Hello world"));
         layout.addComponent(new Button("Click me", new Button.ClickListener() {
+			private static final long serialVersionUID = 1L;
 
-            @Override
+			@Override
             public void buttonClick(ClickEvent event) {
                 Notification.show("Hello at " + new Date());
                 layout.addComponent(new Label("Hello at " + new Date()));

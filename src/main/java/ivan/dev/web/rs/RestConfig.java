@@ -45,7 +45,7 @@ public class RestConfig {
         beanConfig.setVersion( "1.0.0" );
         beanConfig.setResourcePackage( RestConfig.class.getPackage().getName().concat(".services") );
         beanConfig.setScan( true );
-        beanConfig.setBasePath( "/" );
+        beanConfig.setBasePath( "/rs" );
         beanConfig.setDescription( "Simple Swagger app with Jersey2 in a Jetty instance." );
         beanConfig.setTitle( "Services Browser" );
     }
@@ -54,11 +54,11 @@ public class RestConfig {
         ResourceConfig resourceConfig = new ResourceConfig();
         // Replace EntityBrowser with your resource class
         // io.swagger.jaxrs.listing loads up Swagger resources
-        resourceConfig.packages( ApiListingResource.class.getPackage().getName() );
+        resourceConfig.packages( RestConfig.class.getPackage().getName().concat(".services"), ApiListingResource.class.getPackage().getName() );
         ServletContainer servletContainer = new ServletContainer( resourceConfig );
         ServletHolder entityBrowser = new ServletHolder( servletContainer );
         ServletContextHandler entityBrowserContext = new ServletContextHandler( ServletContextHandler.SESSIONS );
-        entityBrowserContext.setContextPath( "/" );
+        entityBrowserContext.setContextPath( "/rs/" );
         entityBrowserContext.addServlet( entityBrowser, "/*" );
         return entityBrowserContext;
     }
@@ -68,7 +68,7 @@ public class RestConfig {
         final ResourceHandler swaggerUIResourceHandler = new ResourceHandler();
         swaggerUIResourceHandler.setResourceBase( RestConfig.class.getClassLoader().getResource( "swaggerui" ).toURI().toString() );
         final ContextHandler swaggerUIContext = new ContextHandler();
-        swaggerUIContext.setContextPath( "/docs/" );
+        swaggerUIContext.setContextPath( "/rs/docs/" );
         swaggerUIContext.setHandler( swaggerUIResourceHandler );
         return swaggerUIContext;
     }
