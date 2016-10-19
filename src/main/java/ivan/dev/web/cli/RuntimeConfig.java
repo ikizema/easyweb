@@ -1,4 +1,4 @@
-package ivan.dev.web.config.cli;
+package ivan.dev.web.cli;
 
 import java.util.ArrayList;
 import java.util.HashMap;

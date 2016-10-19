@@ -10,8 +10,10 @@ import org.springframework.core.env.ConfigurableEnvironment;
 import org.springframework.core.env.MapPropertySource;
 import org.springframework.core.env.MutablePropertySources;
 import org.springframework.core.io.support.ResourcePropertySource;
-import ivan.dev.web.config.cli.RuntimeConfig;
-import ivan.dev.web.rs.AppConfig;
+import ivan.dev.web.cli.RuntimeConfig;
+import ivan.dev.web.rs.RestConfig;
+import ivan.dev.web.server.AppConfig;
+import ivan.dev.web.ui.UIConfig;
 
 public class Main {
 	
@@ -22,7 +24,8 @@ public class Main {
     	SLF4JBridgeHandler.removeHandlersForRootLogger();
     	SLF4JBridgeHandler.install();
     	
-        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
+        @SuppressWarnings("resource")
+		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
 		ConfigurableEnvironment env = context.getEnvironment();
 		MutablePropertySources propertySources = env.getPropertySources();
 
@@ -57,7 +60,10 @@ public class Main {
 		ResourcePropertySource envPropertiesRessources = new ResourcePropertySource("envProperties", envProperties);
 		propertySources.addBefore("envGlobalProperties", envPropertiesRessources);
         
-        context.register(AppConfig.class);
+		context.register(AppConfig.class);
+        context.register(RestConfig.class);
+        context.register(UIConfig.class);
         context.refresh();
+        logger.debug("Context loaded.");
     }
 }
