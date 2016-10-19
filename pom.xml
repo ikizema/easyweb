@@ -14,8 +14,8 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	<swagger-version>1.5.3</swagger-version>
 	<jetty-version>9.2.10.v20150310</jetty-version>
-	
-	<!-- Buils -->
+	<vaadin.version>7.7.3</vaadin.version>
+	<!-- Build -->
 	<project.main.entrypoint>ivan.dev.web.Main</project.main.entrypoint>
   </properties>
 
@@ -94,6 +94,18 @@
 			</plugin>
 		</plugins>
 	</build>
+	
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>com.vaadin</groupId>
+				<artifactId>vaadin-bom</artifactId>
+				<version>${vaadin.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
   <dependencies>
   	<!-- Tests -->
@@ -115,6 +127,12 @@
       <artifactId>jetty-servlet</artifactId>
       <version>${jetty-version}</version>
     </dependency>
+<!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-webapp -->
+<dependency>
+    <groupId>org.eclipse.jetty</groupId>
+    <artifactId>jetty-webapp</artifactId>
+    <version>9.4.0.M1</version>
+</dependency>
 	
 	<!-- Command Line Parser : args4j -->
 	<dependency>
@@ -164,6 +182,37 @@
         <artifactId>swagger-jersey2-jaxrs</artifactId>
         <version>${swagger-version}</version>
     </dependency>
+    
+    <!-- Vaadin -->
+		<dependency>
+			<groupId>com.vaadin</groupId>
+			<artifactId>vaadin-server</artifactId>
+		</dependency>
+		
+		<!-- <dependency>
+			<groupId>com.vaadin</groupId>
+			<artifactId>vaadin-push</artifactId>
+		</dependency> -->
+		
+		<dependency>
+			<groupId>com.vaadin</groupId>
+			<artifactId>vaadin-client-compiled</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.vaadin</groupId>
+			<artifactId>vaadin-themes</artifactId>
+		</dependency>
+		
+    	<dependency>
+            <groupId>com.vaadin</groupId>
+            <artifactId>vaadin-spring</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+    		<groupId>org.jsoup</groupId>
+    		<artifactId>jsoup</artifactId>
+    		<version>1.9.2</version>
+		</dependency>
 	
   </dependencies>
   
