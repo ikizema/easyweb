@@ -1,3 +1,10 @@
+Build and Deploy Runbook :
+docker build -t docker-centos-java .
+(cd ..; mvn install)
+(cd ../target; docker run -it --expose 8080 -p 8080:8080 -v `pwd`:`pwd` -w `pwd` docker-centos-java java -jar ./app/web.0.0.1-SNAPSHOT.jar -p 8080)
+
+
+Temporary Help :
 docker build -t docker-centos-java .
 docker run -it docker-centos-java bash
 docker run -it -v `pwd`:`pwd` -w `pwd` docker-centos-java pwd
