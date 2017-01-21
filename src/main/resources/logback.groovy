@@ -14,7 +14,7 @@ appender("STDOUT", ConsoleAppender) {
 root(INFO, ["STDOUT"])
 scan("30 seconds")
 
-//logger("ivan.dev.web", DEBUG, ["STDOUT"])
+logger("ivan.dev.web", DEBUG, ["STDOUT"])
 //logger("ivan.dev.web", WARN, ["STDOUT"])
 
 //Append to file

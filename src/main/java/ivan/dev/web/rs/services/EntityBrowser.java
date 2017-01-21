@@ -16,6 +16,7 @@ import java.util.List;
 @Path("/entities")
 @Api (value = "/entities", description = "Web Services to browse entities")
 public class EntityBrowser {
+	@SuppressWarnings("unused")
 	private static Logger logger = LoggerFactory.getLogger(EntityBrowser.class);
 	
     @GET
@@ -23,7 +24,6 @@ public class EntityBrowser {
     @ApiOperation(value = "Return one entity", notes = "Returns one entity at random", response = Entity.class)
     @Produces(MediaType.APPLICATION_JSON)
     public Response getEntity() {
-    	logger.debug("test");
         Entity entity = new Entity();
         entity.setName("entity0");
         return Response.ok().entity(entity).build();
@@ -34,7 +34,6 @@ public class EntityBrowser {
     @ApiOperation (value = "Return all entities", notes = "Returns all entities in the collection", response = Entity.class, responseContainer = "List")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getResult() {
-    	logger.info("test");
         List<Entity> entityList = new ArrayList<Entity>();
         for (int i = 0; i <10; i++) {
             Entity entity = new Entity();

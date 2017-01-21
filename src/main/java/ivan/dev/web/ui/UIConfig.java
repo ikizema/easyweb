@@ -10,11 +10,14 @@ import org.eclipse.jetty.servlet.ServletHolder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
+
 import com.vaadin.server.VaadinServlet;
 
 import ivan.dev.web.ui.forms.HelloWorldUI;
 
 @Configuration
+@Profile("ui")
 public class UIConfig {
 	private static Logger logger = LoggerFactory.getLogger(UIConfig.class);
 	

@@ -7,7 +7,7 @@ import com.vaadin.ui.*;
 import com.vaadin.ui.Button.ClickEvent;
 import java.util.Date;
 
-@Title("Light Vaadin")
+@Title("Easy Web App")
 @Theme("valo")
 public class HelloWorldUI extends UI {
 
@@ -18,6 +18,8 @@ public class HelloWorldUI extends UI {
         layout = new CssLayout();
         setContent(layout);
         layout.addComponent(new Label("Hello world"));
+        layout.addComponent(new PersonForm());
+        
         layout.addComponent(new Button("Click me", new Button.ClickListener() {
 			private static final long serialVersionUID = 1L;
 
