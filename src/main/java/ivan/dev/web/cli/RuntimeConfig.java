@@ -8,39 +8,39 @@ import java.util.Map;
 import org.kohsuke.args4j.Argument;
 import org.kohsuke.args4j.Option;
 
-public class RuntimeConfig {
+public final class RuntimeConfig {
 	
-	public static enum Env {DEV, QA, UAT, PROD}
+	public static enum Env {LOCAL, DEV, QA, UAT, PROD}
 	
-    @Option(name="-e", aliases = { "--env" }, usage="Environnement <Opt>", metaVar="[DEV, QA, UAT, PROD]", required=false)
-    private Env env = Env.DEV;
+    @Option(name="-e", aliases = { "--env" }, usage="Environnement <Opt>", metaVar="[LOCAL, DEV, QA, UAT, PROD]", required=false)
+    private static Env env = Env.LOCAL;
 	
     @Option(name="-p",aliases = { "--port" }, usage="Port number <Opt>", metaVar="PORT", required=false)
-    private int port = 8080;
+    private static int port = 8080;
     
     @Option(name="-h",aliases = { "--help" }, usage="Print help message.", hidden=true)
-    private boolean help = false;
+    private static boolean help = false;
 
     @Argument
-    private List<String> arguments = new ArrayList<String>();
+    private static List<String> arguments = new ArrayList<String>();
 
-	public int getPort() {
+	public static int getPort() {
 		return port;
 	}
 
-	public List<String> getArguments() {
+	public static List<String> getArguments() {
 		return arguments;
 	}
 
-	public Env getEnv() {
+	public static Env getEnv() {
 		return env;
 	}
 	
-	public boolean isHelp() {
+	public static boolean isHelp() {
 		return help;
 	}
 
-	public Map<String, Object> getProperties() {
+	public static Map<String, Object> getProperties() {
 		Map<String,Object> properties = new HashMap<String, Object>();
 		properties.put("env", env);
 		properties.put("port", port);
